@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farm Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    #calculator {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <h1>Farm Calculator</h1>
+    <label for="sideLength">Enter the side length of the square farm (in meters):</label>
+    <input type="number" id="sideLength" placeholder="Enter side length">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+
+    function calculateArea(sideLength) {
+      return sideLength * sideLength;
+    }
+
+    function calculatePerimeter(sideLength) {
+      return 4 * sideLength;
+    }
+
+    function calculate() {
+      const sideLength = parseFloat(document.getElementById("sideLength").value);
+      const resultElement = document.getElementById("result");
+
+      if (!isNaN(sideLength) && sideLength > 0) {
+        const area = calculateArea(sideLength);
+        const perimeter = calculatePerimeter(sideLength);
+
+        resultElement.innerHTML = `The area of the farm is ${area.toFixed(2)} square meters.<br>The perimeter of the farm is ${perimeter.toFixed(2)} meters.`;
+      } else {
+        resultElement.innerHTML = "Please enter a valid positive number for the side length.";
+      }
+    }
+  </script>
+</body>
+</html>
